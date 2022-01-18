@@ -23,7 +23,7 @@ namespace Api.Service.Services
         public async Task<UserEntity> Get(Guid id)
             => await _repository.SelectAsync(id);
 
-        public async Task<IEnumerable<UserEntity>> GetAll(Guid id)
+        public async Task<IEnumerable<UserEntity>> GetAll()
             => await _repository.SelectAsync();
 
         public async Task<UserEntity> Post(UserEntity user)
