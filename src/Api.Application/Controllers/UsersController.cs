@@ -3,6 +3,7 @@ using Api.Domain.Intereface.Services.Users;
 using System.Threading.Tasks;
 using System;
 using System.Net;
+using Api.Domain.Intereface;
 
 namespace Api.Application.Controllers
 {
@@ -26,6 +27,45 @@ namespace Api.Application.Controllers
             try
             {
                 return Ok(await _service.GetAll());
+            }
+            catch (ArgumentException ex)
+            {
+                return StatusCode((int)HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
+
+        [HttpGet]
+        [Route("{id}", Name = "GetWithId")]
+        public async Task<ActionResult> Get(Guid id)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            try
+            {
+                return Ok(await _service.Get(id));
+            }
+            catch (ArgumentException ex)
+            {
+                return StatusCode((int)HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Post([FromBody] UserEntity user)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            try
+            {
+                var result = await _service.Post(user);
+                if (result != null)
+                {
+                    return Created(new Uri(Url.Link("GetWithId", new { id = result.Id })), result);
+                }
+
+                return BadRequest();
             }
             catch (ArgumentException ex)
             {
