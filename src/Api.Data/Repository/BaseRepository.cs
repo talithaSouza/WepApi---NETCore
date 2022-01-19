@@ -89,7 +89,7 @@ namespace Api.Data.Repository
                     return null;
 
                 item.UpdateAt = DateTime.UtcNow;
-                //item.CreateAt = result.CreatAt;
+                item.CreateAt = result.CreateAt;
 
                 _context.Entry(result).CurrentValues.SetValues(item);
                 await _context.SaveChangesAsync();
