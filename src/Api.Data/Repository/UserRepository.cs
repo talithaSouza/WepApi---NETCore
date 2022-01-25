@@ -15,7 +15,7 @@ namespace Api.Data.Repository
             _dataset = context.Set<UserEntity>();
         }
 
-        public async Task<UserEntity> FindByLogind(string email)
+        public async Task<UserEntity> FindByLogin(string email)
         {
             return await _dataset.FirstOrDefaultAsync(x => x.Email.Equals(email));
         }
