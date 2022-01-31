@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Api.CrossCutting.DependencyInjection;
 using Api.Domain.Security;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -70,6 +71,28 @@ namespace application
                     Version = "v1",
                     Description = "Arquiterura DDD",
                     TermsOfService = new Uri("http://www.mfrinfo.com.br"),
+                });
+
+                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    Description = "Entre com o token JWT",
+                    Name = "Authorization",
+                    In = ParameterLocation.Header,
+                    Type = SecuritySchemeType.ApiKey
+                });
+
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference
+                            {
+                                Id = "Bearer",
+                                Type = ReferenceType.SecurityScheme
+                            }
+                        }, new List<string>()
+                    }
                 });
             });
             //
