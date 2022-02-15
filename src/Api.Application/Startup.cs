@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 using Api.CrossCutting.DependencyInjection;
+using Api.CrossCutting.Mappings;
 using Api.Domain.Security;
+using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
@@ -29,6 +31,20 @@ namespace application
             ConfigureService.ConfigureDependencieService(services);
             ConfigureRepository.ConfigureDependencieRepository(services);
 
+            #region Configuração E Injeção De Dependencia AutoMapper
+            var config = new AutoMapper.MapperConfiguration(cfg =>
+            {
+                cfg.AddProfile(new DtoToModelProfile());
+                cfg.AddProfile(new EnitityToDtoProfile());
+                cfg.AddProfile(new ModelToEntityProfile());
+            });
+
+            //Inj.Dep
+            IMapper mapper = config.CreateMapper();
+            services.AddSingleton(mapper);
+            #endregion
+
+            #region  Configuração JWT
             var signingConfigurations = new SigningConfigurations();
             services.AddSingleton(signingConfigurations);
 
@@ -61,8 +77,11 @@ namespace application
                                         .AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme)
                                         .RequireAuthenticatedUser().Build());
             });
+            #endregion
 
             services.AddControllers();
+
+            #region Configuração Swagger
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo
@@ -73,6 +92,7 @@ namespace application
                     TermsOfService = new Uri("http://www.mfrinfo.com.br"),
                 });
 
+                //Configuração de Token no Swagger
                 c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {
                     Description = "Entre com o token JWT",
@@ -95,7 +115,8 @@ namespace application
                     }
                 });
             });
-            //
+            #endregion
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
