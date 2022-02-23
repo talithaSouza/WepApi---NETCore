@@ -11,8 +11,10 @@ namespace Api.Data.Test
         {
 
         }
-    }
 
+
+    }
+    //RESPONSÁVEL POR CRIAR O NOME DO BANCO DE DADOS E CRIAR O CONTEXTO PARA TESTE
     public class DbTest : IDisposable
     {
         public string dataBaseName { get; set; } = $"dbApiTest_{Guid.NewGuid().ToString().Replace("-", string.Empty)}";
@@ -22,7 +24,7 @@ namespace Api.Data.Test
         {
             var serviceCollection = new ServiceCollection();
             serviceCollection.AddDbContext<MyContext>(p =>
-                p.UseSqlServer($"Persist Security Info=True; Server=localhost;Database{dataBaseName};User=sa;Password=090112"),
+                p.UseSqlServer($"Persist Security Info=True; Server=localhost;Initial Catalog={dataBaseName};MultipleActiveResultSets=true;User ID=sa;Pwd=090112"),
                   ServiceLifetime.Transient
             );
 
@@ -35,11 +37,12 @@ namespace Api.Data.Test
         }
 
 
+        //DELETA O BANCO DE DADOS AO FINAL DO TESTE
         public void Dispose()
         {
             using (var context = ServiceProvider.GetService<MyContext>())
             {
-                context.Database.EnsureCreated();
+                context.Database.EnsureDeleted();
             }
         }
     }
