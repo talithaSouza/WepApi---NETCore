@@ -9,7 +9,7 @@ namespace Api.Service.Test.Usuario
         public static string NomeUsuario { get; set; }
         public static string EmailUsuario { get; set; }
         public static string NomeUsuarioAlterado { get; set; }
-        public static string EmaiUsuarioAlterado { get; set; }
+        public static string EmailUsuarioAlterado { get; set; }
         public static Guid IdUsuario { get; set; }
 
         public List<UserDto> ListaUserDto { get; set; } = new List<UserDto>();
@@ -63,15 +63,15 @@ namespace Api.Service.Test.Usuario
             UserDtoUpdate = new UserDtoUpdate()
             {
                 Id = IdUsuario,
-                Name = NomeUsuario,
-                Email = EmailUsuario,
+                Name = NomeUsuarioAlterado,
+                Email = EmailUsuarioAlterado,
             };
 
             UserDtoUpdateResult = new UserDtoUpdateResult()
             {
                 Id = IdUsuario,
-                Name = NomeUsuario,
-                Email = EmailUsuario,
+                Name = NomeUsuarioAlterado,
+                Email = EmailUsuarioAlterado,
                 UpdatAt = DateTime.UtcNow
             };
 
