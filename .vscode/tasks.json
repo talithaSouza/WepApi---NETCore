@@ -45,12 +45,16 @@
             "args": [
                 "test",
                 "${workspaceFolder}/src/Api.Data.Test/api.Data.Test.csproj"
-            ],
-            "problemMatcher": [],
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            }
+            ]
+        },
+        {
+            "label": "Service.Testes",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "test",
+                "${workspaceFolder}/src/Api.Service.Test/api.Service.Test.csproj"
+            ]
         }
     ]
 }
