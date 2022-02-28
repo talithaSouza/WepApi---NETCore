@@ -24,13 +24,13 @@ namespace Api.Domain.Models
             set { _email = value; }
         }
 
-        private DateTime _creteAt;
-        public DateTime CreatAt
+        private DateTime _createAt;
+        public DateTime CreateAt
         {
-            get { return _creteAt; }
+            get { return _createAt; }
             set
             {
-                _creteAt = value == null ? DateTime.UtcNow : value;
+                _createAt = value == null ? DateTime.UtcNow : value;
             }
         }
 
