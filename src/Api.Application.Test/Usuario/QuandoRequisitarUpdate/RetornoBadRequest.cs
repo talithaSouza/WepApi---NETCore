@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Moq;
 using Xunit;
 
-namespace Api.Application.Test.Usuario.QuandoRequisitarUpdate
+namespace Api.Application.Test.Usuario.QuandoRequisitarUPDATE
 {
     public class RetornoBadRequest
     {
@@ -37,12 +37,9 @@ namespace Api.Application.Test.Usuario.QuandoRequisitarUpdate
             _controller = new UsersController(serviceMock.Object);
             _controller.ModelState.AddModelError("Email", "É um campo obrigatório");
 
-            Mock<IUrlHelper> urlMock = new Mock<IUrlHelper>();
-            urlMock.Setup(m => m.Link(It.IsAny<string>(), It.IsAny<object>())).Returns(Faker.Internet.Url());
-            _controller.Url = urlMock.Object;
-
             var result = await _controller.Put(userDtoUpdate);
             Assert.True(result is BadRequestObjectResult);
+            Assert.False(_controller.ModelState.IsValid);
 
         }
     }

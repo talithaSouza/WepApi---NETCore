@@ -1,0 +1,5 @@
+Mock sempre a camada anterior
+
+*repository moca o banco
+*Service moca os dados
+*Controller moca a Service

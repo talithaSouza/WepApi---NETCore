@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Moq;
 using Xunit;
 
-namespace Api.Application.Test.Usuario.QuandoRequisitarUpdate
+namespace Api.Application.Test.Usuario.QuandoRequisitarUPDATE
 {
     public class Retorno_Update
     {
@@ -36,19 +36,12 @@ namespace Api.Application.Test.Usuario.QuandoRequisitarUpdate
             });
             _controller = new UsersController(serviceMock.Object);
 
-            Mock<IUrlHelper> urlMock = new Mock<IUrlHelper>();
-            urlMock.Setup(m => m.Link(It.IsAny<string>(), It.IsAny<object>())).Returns(Faker.Internet.Url());
-            _controller.Url = urlMock.Object;
-
             var result = await _controller.Put(userDtoUpdate);
             Assert.True(result is OkObjectResult);
 
             UserDtoUpdateResult resultValue = ((OkObjectResult)result).Value as UserDtoUpdateResult;
             Assert.NotNull(resultValue);
             Assert.Equal(userDtoUpdate.Name, resultValue.Name);
-
-
-
         }
     }
 }

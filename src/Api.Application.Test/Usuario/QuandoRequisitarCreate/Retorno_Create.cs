@@ -29,7 +29,7 @@ namespace Api.Application.Test.Usuario.QuandoRequisitarCreate
             });
             _controller = new UsersController(serviceMock.Object);
 
-            //Mocando o endereço URL da API para rotas
+            //Mocando o endereço URL da API para o retorno do guid na rota: como definido na controller
             Mock<IUrlHelper> urlMock = new Mock<IUrlHelper>();
             urlMock.Setup(m => m.Link(It.IsAny<String>(), It.IsAny<object>())).Returns(Faker.Internet.Url());
             _controller.Url = urlMock.Object;
