@@ -21,9 +21,12 @@
             },
             "env": {
                 "ASPNETCORE_ENVIRONMENT": "Development",
-                "DB_CONNECTION": "Server=localhost;Initial Catalog=dbAPI;MultipleActiveResultSets=true;User ID=sa;Pwd=090112",
+                "DB_CONNECTION": "Persist Security Info=True; Server=localhost;Initial Catalog=dbAPI;MultipleActiveResultSets=true;User ID=sa;Pwd=090112",
                 "DATABASE": "SQLSERVER",
-                "MIGRATION": "APLICAR"
+                "MIGRATION": "APLICAR",
+                "Audience": "ExemploAudience",
+                "Issuer": "ExemploIssuer",
+                "Seconds": "600"
             },
             "sourceFileMap": {
                 "/Views": "${workspaceFolder}/Views"
