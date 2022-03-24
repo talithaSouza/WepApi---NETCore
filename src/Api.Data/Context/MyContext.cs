@@ -1,5 +1,6 @@
 using System;
 using Api.Data.Mapping;
+using Api.Domain.Entities;
 using Api.Domain.Intereface;
 using Microsoft.EntityFrameworkCore;
 

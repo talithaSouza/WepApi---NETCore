@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Api.Domain.Dtos.User;
+using Api.Domain.Entities;
 using Api.Domain.Intereface;
 using Api.Domain.Intereface.Services.Users;
 using Api.Domain.Models;

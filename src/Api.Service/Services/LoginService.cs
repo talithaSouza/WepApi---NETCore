@@ -4,7 +4,7 @@ using System.Security.Claims;
 using System.Security.Principal;
 using System.Threading.Tasks;
 using Api.Domain.Dtos;
-using Api.Domain.Intereface;
+using Api.Domain.Entities;
 using Api.Domain.Intereface.Services.Users;
 using Api.Domain.Repository;
 using Api.Domain.Security;
