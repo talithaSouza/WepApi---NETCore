@@ -44,7 +44,7 @@
             "type": "process",
             "args": [
                 "test",
-                "${workspaceFolder}/src/Testes/Api.Data.Test/api.Data.Test.csproj"
+                "${workspaceFolder}/src/Api.Data.Test/api.Data.Test.csproj"
             ]
         },
         {
@@ -53,7 +53,7 @@
             "type": "process",
             "args": [
                 "test",
-                "${workspaceFolder}/src/Testes/Api.Service.Test/api.Service.Test.csproj"
+                "${workspaceFolder}/src/Api.Service.Test/api.Service.Test.csproj"
             ]
         },
         {
@@ -62,7 +62,7 @@
             "type": "process",
             "args": [
                 "test",
-                "${workspaceFolder}/src/Testes/Api.Application.Test/api.Application.Test.csproj"
+                "${workspaceFolder}/src/Api.Application.Test/api.Application.Test.csproj"
             ]
         },
         {
@@ -71,7 +71,7 @@
             "type": "process",
             "args": [
                 "test",
-                "${workspaceFolder}/src/Testes/Api.Integration.Test/api.Integration.Test.csproj"
+                "${workspaceFolder}/src/Api.Integration.Test/api.Integration.Test.csproj"
             ]
         }
     ]
