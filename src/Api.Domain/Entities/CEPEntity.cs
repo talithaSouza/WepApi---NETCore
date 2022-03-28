@@ -11,7 +11,7 @@ namespace Api.Domain.Entities
 
         [Required]
         [MaxLength(60)]
-        public int Logradouro { get; set; }
+        public string Logradouro { get; set; }
 
         [MaxLength(10)]
         public string Numero { get; set; }

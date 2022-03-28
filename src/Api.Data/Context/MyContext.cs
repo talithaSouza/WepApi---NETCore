@@ -34,6 +34,7 @@ namespace Api.Data.Context
             );
 
             UfSeeds.UfsBuilder(modelBuilder);
+            MunicipioSeeds.MunicipioBuilder(modelBuilder);
         }
     }
 }

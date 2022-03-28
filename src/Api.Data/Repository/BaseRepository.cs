@@ -51,6 +51,7 @@ namespace Api.Data.Repository
             }
             catch (Exception ex)
             {
+                string msg = ex.Message;
                 throw ex;
             }
 
