@@ -25,8 +25,11 @@ namespace Api.Domain.Models
                 _numero = String.IsNullOrEmpty(value) ? "S/N" : value;
             }
         }
-
-
-
+        private Guid _municipioId;
+        public Guid MunicipioID
+        {
+            get { return _municipioId; }
+            set { _municipioId = value; }
+        }
     }
 }
