@@ -3,17 +3,16 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Api.Domain.Dtos.Cep;
 using Api.Domain.Dtos.Municipio;
-using Api.Domain.Dtos.Uf;
 
 namespace Api.Domain.Intereface.Services.Cep
 {
-    public interface IMunicipioservice
+    public interface ICepservice
     {
-        Task<MunicipioDto> Get(Guid id);
+        Task<CepDto> Get(Guid id);
         Task<CepDto> GetByCep(string cep);
         Task<IEnumerable<CepDto>> GetAll();
-        Task<CepDtoCreateResult> Post(CepDtoCreate municipio);
-        Task<CepDtoUpdateResult> Put(CepDtoUpdate municipio);
+        Task<CepDtoCreateResult> Post(CepDtoCreate cep);
+        Task<CepDtoUpdateResult> Put(CepDtoUpdate cep);
         Task<bool> Delete(Guid id);
     }
 }

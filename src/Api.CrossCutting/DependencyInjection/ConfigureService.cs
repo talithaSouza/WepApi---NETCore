@@ -8,8 +8,10 @@ namespace Api.CrossCutting.DependencyInjection
     {
         public static void ConfigureDependencieService(IServiceCollection serviceCollection)
         {
+            #region Usuario
             serviceCollection.AddTransient<IUserService, UserService>();
             serviceCollection.AddTransient<ILoginService, LoginService>();
+            #endregion
         }
 
     }
