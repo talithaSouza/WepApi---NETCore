@@ -8,7 +8,7 @@ using AutoMapper;
 
 namespace Api.Service.Services
 {
-    public class UfService : IUfservice
+    public class UfService : IUfService
     {
         private readonly IUfRepository _repository;
         private readonly IMapper _mapper;
@@ -25,7 +25,7 @@ namespace Api.Service.Services
 
         public async Task<IEnumerable<UfDto>> GetAll()
         {
-            var list = _repository.SelectAsync();
+            var list = await _repository.SelectAsync();
             return _mapper.Map<IEnumerable<UfDto>>(list);
         }
     }

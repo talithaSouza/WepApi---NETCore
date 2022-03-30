@@ -2,11 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Api.Domain.Dtos.Cep;
-using Api.Domain.Dtos.Municipio;
 
 namespace Api.Domain.Intereface.Services.Cep
 {
-    public interface ICepservice
+    public interface ICepService
     {
         Task<CepDto> Get(Guid id);
         Task<CepDto> GetByCep(string cep);

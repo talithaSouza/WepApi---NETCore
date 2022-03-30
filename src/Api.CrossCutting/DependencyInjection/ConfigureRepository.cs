@@ -13,7 +13,20 @@ namespace Api.CrossCutting.DependencyInjection
         public static void ConfigureDependencieRepository(IServiceCollection serviceCollection)
         {
             serviceCollection.AddScoped(typeof(IRepository<>), typeof(BaseRepository<>));
+
+            #region INJE.DEPEN REPOSITORIOS
+            //USUARIO
             serviceCollection.AddScoped<IUserRepository, UserRepository>();
+
+            //UF
+            serviceCollection.AddScoped<IUfRepository, UfRepository>();
+
+            //MUNICIPIO
+            serviceCollection.AddScoped<IMunicipioRepository, MunicipioRepository>();
+
+            //CEP
+            serviceCollection.AddScoped<ICepRepository, CepRepository>();
+            #endregion
 
             if (Environment.GetEnvironmentVariable("DATABASE").ToLower() == "SQLSERVER".ToLower())
             {

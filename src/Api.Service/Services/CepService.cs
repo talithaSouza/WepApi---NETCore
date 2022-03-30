@@ -11,7 +11,7 @@ using AutoMapper;
 
 namespace Api.Service.Services
 {
-    public class CepService : ICepservice
+    public class CepService : ICepService
     {
         private readonly ICepRepository _repository;
         private readonly IMapper _mapper;
