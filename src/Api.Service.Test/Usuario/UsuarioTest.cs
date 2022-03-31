@@ -6,12 +6,14 @@ namespace Api.Service.Test.Usuario
 {
     public class UsuarioTest
     {
+        //Entities
         public static string NomeUsuario { get; set; }
         public static string EmailUsuario { get; set; }
         public static string NomeUsuarioAlterado { get; set; }
         public static string EmailUsuarioAlterado { get; set; }
         public static Guid IdUsuario { get; set; }
 
+        //Dtos
         public List<UserDto> ListaUserDto { get; set; } = new List<UserDto>();
         public UserDto UserDto { get; set; }
         public UserDtoCreate UserDtoCreate { get; set; }
@@ -25,7 +27,7 @@ namespace Api.Service.Test.Usuario
             NomeUsuario = Faker.Name.FullName();
             EmailUsuario = Faker.Internet.Email();
             NomeUsuarioAlterado = Faker.Name.FullName();
-            EmailUsuario = Faker.Internet.Email();
+            EmailUsuarioAlterado = Faker.Internet.Email();
 
             for (int i = 0; i < 10; i++)
             {
@@ -74,8 +76,6 @@ namespace Api.Service.Test.Usuario
                 Email = EmailUsuarioAlterado,
                 UpdateAt = DateTime.UtcNow
             };
-
-
         }
     }
 }
