@@ -19,11 +19,9 @@ namespace Api.Service.Test.Municipio
 
             var result = await _service.Post(MunicipioDtoCreate);
             Assert.NotNull(result);
-            Assert.NotNull(result.Id);
             Assert.Equal(NomeMunicipio, result.Nome);
             Assert.Equal(CodIBGEMunicipio, result.CodIBGE);
             Assert.Equal(UfIDMunicipio, result.UfID);
-            Assert.NotNull(result.CreateAt);
         }
     }
 }

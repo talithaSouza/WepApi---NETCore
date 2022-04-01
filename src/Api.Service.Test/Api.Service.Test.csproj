@@ -28,5 +28,11 @@
     <ProjectReference Include="..\Api.CrossCutting\CrossCutting.csproj" />
     <ProjectReference Include="..\Api.Domain\Domain.csproj" />
   </ItemGroup>
+  
+  <ItemGroup>
+    <None Update="xunit.runner.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 
 </Project>

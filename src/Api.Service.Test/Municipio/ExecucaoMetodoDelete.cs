@@ -25,7 +25,6 @@ namespace Api.Service.Test.Municipio
             Assert.Equal(NomeMunicipio, result.Nome);
             Assert.Equal(CodIBGEMunicipio, result.CodIBGE);
             Assert.Equal(UfIDMunicipio, result.UfID);
-            Assert.NotNull(result.CreateAt);
             #endregion
 
             _serviceMock = new Mock<IMunicipioservice>();
