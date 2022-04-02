@@ -24,7 +24,7 @@ namespace Api.Application.Controllers
         public async Task<ActionResult> Get(Guid Id)
         {
             if (!ModelState.IsValid)
-                return BadRequest();
+                return BadRequest(ModelState);
             try
             {
                 var result = await _service.Get(Id);
