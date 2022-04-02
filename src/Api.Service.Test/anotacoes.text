@@ -3,3 +3,5 @@ Mock sempre a camada anterior
 *repository moca o banco
 *Service moca os dados
 *Controller moca a Service
+
+a versão sdk que eu uso no trabalho é 5.0.301
