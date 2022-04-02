@@ -14,7 +14,7 @@ namespace Api.Domain.Dtos.Cep
 
         [Required(ErrorMessage = "Nome de Município é obrigatório")]
         public string Logradouro { get; set; }
-        public int Numero { get; set; }
+        public string Numero { get; set; }
 
         [Required(ErrorMessage = "Município é obrigatório")]
         public Guid MunicipioID { get; set; }
