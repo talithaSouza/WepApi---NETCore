@@ -37,11 +37,13 @@ namespace Api.Application.Test.Uf.QuandoRequisitadoGET
             var result = await _controller.Get(Guid.NewGuid());
             Assert.True(result is BadRequestObjectResult);
 
-            //var resultValue = ((OkObjectResult)result).Value as UfDto;
-            //Assert.NotNull(resultValue);
-            //Assert.True(resultValue.Id == Id);
-            //Assert.Equal(Nome, resultValue.Nome);
-            //Assert.Equal(Sigla, resultValue.Sigla);
+            _serviceMock = new Mock<IUfService>();
+            _serviceMock.Setup(m => m.Get(It.IsAny<Guid>()))
+                        .Returns(Task.FromResult((UfDto)null));
+
+            _controller = new UfController(_serviceMock.Object);
+            result = await _controller.Get(Guid.NewGuid());
+            Assert.True(result is NotFoundResult);
         }
     }
 }

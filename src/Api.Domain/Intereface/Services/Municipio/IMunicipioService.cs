@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Api.Domain.Dtos.Municipio;
-using Api.Domain.Dtos.Uf;
 
 namespace Api.Domain.Intereface.Services.Municipio
 {
