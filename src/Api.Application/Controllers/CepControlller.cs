@@ -1,8 +1,8 @@
 using System;
 using System.Net;
 using System.Threading.Tasks;
-using Api.Domain.Dtos.Municipio;
-using Api.Domain.Intereface.Services.Municipio;
+using Api.Domain.Dtos.Cep;
+using Api.Domain.Intereface.Services.Cep;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,10 +10,10 @@ namespace Api.Application.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class MunicipioController : ControllerBase
+    public class CepControlller : ControllerBase
     {
-        private IMunicipioservice _service;
-        public MunicipioController(IMunicipioservice service)
+        private ICepService _service;
+        public CepControlller(ICepService service)
         {
             _service = service;
         }
@@ -41,17 +41,15 @@ namespace Api.Application.Controllers
         [Authorize("Bearer")]
         [HttpGet]
         [Route("{id}", Name = "GetWithId")]
-        public async Task<ActionResult> GetComplete(Guid Id)
+        public async Task<ActionResult> GetByCep(string cep)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
-
             try
             {
-                var result = await _service.GetCompleteById(Id);
+                var result = await _service.GetByCep(cep);
                 if (result == null)
                     return NotFound();
-
                 return Ok(result);
             }
             catch (ArgumentException ex)
@@ -59,53 +57,16 @@ namespace Api.Application.Controllers
                 return StatusCode((int)HttpStatusCode.InternalServerError, ex.Message);
             }
         }
-
-        [Authorize("Bearer")]
-        [HttpGet]
-        [Route("{id}", Name = "GetWithId")]
-        public async Task<ActionResult> GetCompleteByIBGE(int codIBGE)
-        {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
-            try
-            {
-                var result = await _service.GetCompleteByIBGE(codIBGE);
-                if (result == null)
-                    return NotFound();
-
-                return Ok(result);
-            }
-            catch (ArgumentException ex)
-            {
-                return StatusCode((int)HttpStatusCode.InternalServerError, ex.Message);
-            }
-        }
-
-        [Authorize("Bearer")]
-        [HttpGet]
-        public async Task<ActionResult> GetlAll()
-        {
-            try
-            {
-                return Ok(await _service.GetAll());
-            }
-            catch (ArgumentException ex)
-            {
-                return StatusCode((int)HttpStatusCode.InternalServerError, ex.Message);
-            }
-        }
-
 
         [Authorize("Bearer")]
         [HttpPost]
-        public async Task<ActionResult> Post([FromBody] MunicipioDtoCreate municipio)
+        public async Task<ActionResult> Post([FromBody] CepDtoCreate cep)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
-
             try
             {
-                var result = await _service.Post(municipio);
+                var result = await _service.Post(cep);
                 if (result == null)
                     return BadRequest();
 
@@ -119,14 +80,13 @@ namespace Api.Application.Controllers
 
         [Authorize("Bearer")]
         [HttpPut]
-        public async Task<ActionResult> Put([FromBody] MunicipioDtoUpdate municipio)
+        public async Task<ActionResult> Put([FromBody] CepDtoCreate cep)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
-
             try
             {
-                var result = await _service.Put(municipio);
+                var result = await _service.Post(cep);
                 if (result == null)
                     return BadRequest();
 
@@ -144,7 +104,6 @@ namespace Api.Application.Controllers
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
-
             try
             {
                 return Ok(await _service.Delete(Id));
@@ -154,9 +113,5 @@ namespace Api.Application.Controllers
                 return StatusCode((int)HttpStatusCode.InternalServerError, ex.Message);
             }
         }
-
-
-
-
     }
 }
