@@ -9,6 +9,7 @@ using Api.Domain.Dtos.User;
 
 namespace Api.Application.Controllers
 {
+
     [Route("api/[controller]")]
     [ApiController]
     public class UsersController : ControllerBase
@@ -59,7 +60,6 @@ namespace Api.Application.Controllers
             }
         }
 
-        [Authorize("Bearer")]
         [HttpPost]
         public async Task<ActionResult> Post([FromBody] UserDtoCreate user)
         {
