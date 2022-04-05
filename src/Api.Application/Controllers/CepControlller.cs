@@ -20,7 +20,7 @@ namespace Api.Application.Controllers
 
         [Authorize("Bearer")]
         [HttpGet]
-        [Route("{id}", Name = "GetWithId")]
+        [Route("{id}", Name = "GetCepWithId")]
         public async Task<ActionResult> Get(Guid Id)
         {
             if (!ModelState.IsValid)
@@ -40,7 +40,7 @@ namespace Api.Application.Controllers
 
         [Authorize("Bearer")]
         [HttpGet]
-        [Route("{id}", Name = "GetWithId")]
+        [Route("byCep/{cep}")]
         public async Task<ActionResult> GetByCep(string cep)
         {
             if (!ModelState.IsValid)
@@ -70,7 +70,7 @@ namespace Api.Application.Controllers
                 if (result == null)
                     return BadRequest();
 
-                return Created(new Uri(Url.Link("GetWithId", new { id = result.Id })), result);
+                return Created(new Uri(Url.Link("GetCepWithId", new { id = result.Id })), result);
             }
             catch (ArgumentException ex)
             {
@@ -99,7 +99,7 @@ namespace Api.Application.Controllers
         }
 
         [Authorize("Bearer")]
-        [HttpDelete]
+        [HttpDelete("{Id}")]
         public async Task<ActionResult> Delete(Guid Id)
         {
             if (!ModelState.IsValid)

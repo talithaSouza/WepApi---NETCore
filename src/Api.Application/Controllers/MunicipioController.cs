@@ -20,7 +20,7 @@ namespace Api.Application.Controllers
 
         [Authorize("Bearer")]
         [HttpGet]
-        [Route("{id}", Name = "GetWithId")]
+        [Route("{id}", Name = "GetMunicipioWithId")]
         public async Task<ActionResult> Get(Guid Id)
         {
             if (!ModelState.IsValid)
@@ -30,6 +30,7 @@ namespace Api.Application.Controllers
                 var result = await _service.Get(Id);
                 if (result == null)
                     return NotFound();
+
                 return Ok(result);
             }
             catch (ArgumentException ex)
@@ -40,8 +41,8 @@ namespace Api.Application.Controllers
 
         [Authorize("Bearer")]
         [HttpGet]
-        [Route("{id}", Name = "GetWithId")]
-        public async Task<ActionResult> GetComplete(Guid Id)
+        [Route("complete/{id}")]
+        public async Task<ActionResult> GetCompleteById(Guid Id)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -62,7 +63,7 @@ namespace Api.Application.Controllers
 
         [Authorize("Bearer")]
         [HttpGet]
-        [Route("{id}", Name = "GetWithId")]
+        [Route("completeByIbge/{CodIbge}")]
         public async Task<ActionResult> GetCompleteByIBGE(int codIBGE)
         {
             if (!ModelState.IsValid)
@@ -85,6 +86,8 @@ namespace Api.Application.Controllers
         [HttpGet]
         public async Task<ActionResult> GetlAll()
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
             try
             {
                 return Ok(await _service.GetAll());
@@ -109,7 +112,7 @@ namespace Api.Application.Controllers
                 if (result == null)
                     return BadRequest();
 
-                return Created(new Uri(Url.Link("GetWithId", new { id = result.Id })), result);
+                return Created(new Uri(Url.Link("GetMunicipioWithId", new { id = result.Id })), result);
             }
             catch (ArgumentException ex)
             {
@@ -139,7 +142,7 @@ namespace Api.Application.Controllers
         }
 
         [Authorize("Bearer")]
-        [HttpDelete]
+        [HttpDelete("{Id}")]
         public async Task<ActionResult> Delete(Guid Id)
         {
             if (!ModelState.IsValid)

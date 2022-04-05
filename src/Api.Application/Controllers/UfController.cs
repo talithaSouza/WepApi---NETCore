@@ -20,8 +20,7 @@ namespace Api.Application.Controllers
         }
 
         [Authorize("Bearer")]
-        [HttpGet]
-        [Route("{id}", Name = "GetWithId")]
+        [HttpGet("{id}")]
         public async Task<ActionResult> Get(Guid Id)
         {
             if (!ModelState.IsValid)
@@ -44,7 +43,7 @@ namespace Api.Application.Controllers
         public async Task<ActionResult> GetAll()
         {
             if (!ModelState.IsValid)
-                return BadRequest();
+                return BadRequest(ModelState);
             try
             {
                 return Ok(await _service.GetAll());
