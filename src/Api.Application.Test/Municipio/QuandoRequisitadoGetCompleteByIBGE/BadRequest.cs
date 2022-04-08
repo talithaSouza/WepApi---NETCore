@@ -23,7 +23,7 @@ namespace Api.Application.Test.Municipio.QuandoRequisitadoGetCompleteByIBGE
                         {
                             Id = Guid.NewGuid(),
                             Nome = Faker.Address.City(),
-                            CodIBGE = Faker.RandomNumber.Next(100000, 999999),
+                            CodIBGE = Faker.RandomNumber.Next(10000, 999999),
                             UfID = Guid.NewGuid(),
                             Uf = new UfDto
                             {
@@ -36,7 +36,7 @@ namespace Api.Application.Test.Municipio.QuandoRequisitadoGetCompleteByIBGE
             _controller = new MunicipioController(_serviceMock.Object);
             _controller.ModelState.AddModelError("Ibge", "Formato Inválido");
 
-            var result = await _controller.GetCompleteByIBGE(Faker.RandomNumber.Next(100000, 99999));
+            var result = await _controller.GetCompleteByIBGE(Faker.RandomNumber.Next(10000, 99999));
             Assert.True(result is BadRequestObjectResult);
         }
     }

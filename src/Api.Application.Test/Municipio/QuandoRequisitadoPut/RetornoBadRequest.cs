@@ -37,13 +37,13 @@ namespace Api.Application.Test.Municipio.QuandoRequisitadoPut
             var municipio = new MunicipioDtoUpdate
             {
                 Id = IdMunicipio,
-                Nome = NomeMunicipio,
+
                 CodIBGE = CodIBGEMunicipio,
                 UfID = UfIDMunicipio,
             };
 
             _controller = new MunicipioController(_serviceMock.Object);
-            _controller.ModelState.AddModelError("IdUf", "Formato Invalido");
+            _controller.ModelState.AddModelError("Nome", "Nome é obrigatório");
             var result = await _controller.Put(municipio);
             Assert.True(result is BadRequestObjectResult);
         }

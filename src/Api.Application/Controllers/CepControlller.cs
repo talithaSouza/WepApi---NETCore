@@ -79,13 +79,13 @@ namespace Api.Application.Controllers
 
         [Authorize("Bearer")]
         [HttpPut]
-        public async Task<ActionResult> Put([FromBody] CepDtoCreate cep)
+        public async Task<ActionResult> Put([FromBody] CepDtoUpdate cep)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
             try
             {
-                var result = await _service.Post(cep);
+                var result = await _service.Put(cep);
                 if (result == null)
                     return BadRequest();
 

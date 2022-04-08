@@ -33,7 +33,7 @@ namespace Api.Application.Test.Municipio.QuandoRequisitarCreate
             });
 
             _controller = new MunicipioController(serviceMock.Object);
-            _controller.ModelState.AddModelError("UfID", "Formato Inválido");
+            _controller.ModelState.AddModelError("Nome", "Nome é obrigatório");
 
             //Mocando o endereço URL da API para o retorno do guid na rota: como definido na controller
             Mock<IUrlHelper> urlMock = new Mock<IUrlHelper>();
@@ -43,7 +43,7 @@ namespace Api.Application.Test.Municipio.QuandoRequisitarCreate
 
             var municipioCreate = new MunicipioDtoCreate()
             {
-                Nome = NomeMunicipio,
+
                 CodIBGE = CodIBGEMunicipio,
                 UfID = UfIDMunicipio,
             };
