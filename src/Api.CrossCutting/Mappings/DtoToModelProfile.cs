@@ -30,7 +30,8 @@ namespace Api.CrossCutting.Mappings
                 .ReverseMap();
             CreateMap<MunicipioModel, MunicipioDtoCreate>()
                 .ReverseMap();
-            CreateMap<MunicipioModel, MunicipioDtoUpdate>();
+            CreateMap<MunicipioModel, MunicipioDtoUpdate>()
+                .ReverseMap();
             #endregion
 
             #region CEP
@@ -38,7 +39,8 @@ namespace Api.CrossCutting.Mappings
                 .ReverseMap();
             CreateMap<CepModel, CepDtoCreate>()
                 .ReverseMap();
-            CreateMap<CepModel, CepDtoUpdate>();
+            CreateMap<CepModel, CepDtoUpdate>()
+                .ReverseMap();
             #endregion
         }
     }

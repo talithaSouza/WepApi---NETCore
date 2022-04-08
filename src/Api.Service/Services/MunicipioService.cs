@@ -64,9 +64,10 @@ namespace Api.Service.Services
         public async Task<MunicipioDtoUpdateResult> Put(MunicipioDtoUpdate municipio)
         {
             //DTOUPDATE => MODEL
-            var municipioModel = _mapper.Map<MunicipioModel>(municipio);
+            var model = _mapper.Map<MunicipioModel>(municipio);
             //MODEL => ENTITY
-            var municipioEntity = _mapper.Map<MunicipioEntity>(municipioModel);
+            var municipioEntity = _mapper.Map<MunicipioEntity>(model);
+
 
             var result = await _repository.UpdateAsync(municipioEntity);
             return _mapper.Map<MunicipioDtoUpdateResult>(result);
