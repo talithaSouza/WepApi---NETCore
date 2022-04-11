@@ -103,7 +103,6 @@ namespace Api.Integration.Test.Municipio
             Assert.NotNull(resultGetCompleteIBGE.Uf);
             #endregion
 
-
             #region GetAll
             response = await client.GetAsync($"{hostApi}/municipio");
             jsonResult = await response.Content.ReadAsStringAsync();
@@ -113,6 +112,14 @@ namespace Api.Integration.Test.Municipio
             Assert.NotNull(listResult);
             Assert.True(listResult.Count() > 0);
             Assert.True(listResult.FirstOrDefault(x => x.Id == resultGet.Id) != null);
+            #endregion
+
+            #region Delete
+            response = await client.DeleteAsync($"{hostApi}/municipio/{resultGet.Id}");
+            jsonResult = await response.Content.ReadAsStringAsync();
+            var resultDelete = JsonConvert.DeserializeObject<bool>(jsonResult);
+
+            Assert.True(resultDelete);
             #endregion
         }
     }
