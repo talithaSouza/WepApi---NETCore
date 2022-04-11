@@ -20,7 +20,7 @@ namespace Api.Application.Controllers
         }
 
         [Authorize("Bearer")]
-        [HttpGet("{id}")]
+        [HttpGet("{Id}")]
         public async Task<ActionResult> Get(Guid Id)
         {
             if (!ModelState.IsValid)

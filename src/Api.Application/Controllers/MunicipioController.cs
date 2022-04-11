@@ -20,7 +20,7 @@ namespace Api.Application.Controllers
 
         [Authorize("Bearer")]
         [HttpGet]
-        [Route("{id}", Name = "GetMunicipioWithId")]
+        [Route("{Id}", Name = "GetMunicipioWithId")]
         public async Task<ActionResult> Get(Guid Id)
         {
             if (!ModelState.IsValid)
@@ -41,7 +41,7 @@ namespace Api.Application.Controllers
 
         [Authorize("Bearer")]
         [HttpGet]
-        [Route("complete/{id}")]
+        [Route("complete/{Id}")]
         public async Task<ActionResult> GetCompleteById(Guid Id)
         {
             if (!ModelState.IsValid)
@@ -63,7 +63,7 @@ namespace Api.Application.Controllers
 
         [Authorize("Bearer")]
         [HttpGet]
-        [Route("completeByIbge/{CodIbge}")]
+        [Route("completeByIbge/{codIBGE}")]
         public async Task<ActionResult> GetCompleteByIBGE(int codIBGE)
         {
             if (!ModelState.IsValid)

@@ -20,7 +20,7 @@ namespace Api.Application.Controllers
 
         [Authorize("Bearer")]
         [HttpGet]
-        [Route("{id}", Name = "GetCepWithId")]
+        [Route("{Id}", Name = "GetCepWithId")]
         public async Task<ActionResult> Get(Guid Id)
         {
             if (!ModelState.IsValid)
