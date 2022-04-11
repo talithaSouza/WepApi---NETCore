@@ -13,7 +13,7 @@ namespace Api.Application.Test.Cep.QuandoRequisitadoGetByCep
 {
     public class RetornoOK
     {
-        private CepControlller _controller;
+        private CepController _controller;
 
         [Fact(DisplayName = "Retorno Metodo OK de Cep por cep")]
         public async Task RetornoOK_MetodoGetByCep()
@@ -50,7 +50,7 @@ namespace Api.Application.Test.Cep.QuandoRequisitadoGetByCep
                             }
                         });
 
-            _controller = new CepControlller(_serviceMock.Object);
+            _controller = new CepController(_serviceMock.Object);
 
             var result = await _controller.GetByCep(Cep);
             Assert.True(result is OkObjectResult);

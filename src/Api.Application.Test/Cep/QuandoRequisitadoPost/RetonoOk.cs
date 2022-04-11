@@ -11,7 +11,7 @@ namespace Api.Application.Test.Cep.QuandoRequisitadoPost
 {
     public class RetonoOk
     {
-        private CepControlller _controller;
+        private CepController _controller;
 
         [Fact(DisplayName = "Retorno Ok Created de Cep")]
         public async Task RetornoOK_Created()
@@ -36,7 +36,7 @@ namespace Api.Application.Test.Cep.QuandoRequisitadoPost
                 CreateAt = DateTime.UtcNow
             });
 
-            _controller = new CepControlller(serviceMock.Object);
+            _controller = new CepController(serviceMock.Object);
 
             //Mocando o endereço URL da API para o retorno do guid na rota: como definido na controller
             Mock<IUrlHelper> urlMock = new Mock<IUrlHelper>();

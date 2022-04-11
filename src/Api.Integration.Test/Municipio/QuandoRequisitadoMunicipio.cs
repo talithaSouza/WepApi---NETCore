@@ -120,6 +120,8 @@ namespace Api.Integration.Test.Municipio
             var resultDelete = JsonConvert.DeserializeObject<bool>(jsonResult);
 
             Assert.True(resultDelete);
+            response = await client.GetAsync($"{hostApi}/municipio/{resultGet.Id}");
+            Assert.Equal(response.StatusCode, HttpStatusCode.NotFound);
             #endregion
         }
     }

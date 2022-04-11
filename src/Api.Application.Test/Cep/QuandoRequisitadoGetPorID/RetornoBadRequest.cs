@@ -13,7 +13,7 @@ namespace Api.Application.Test.Cep.QuandoRequisitadoGet
 {
     public class RetornoBadRequest
     {
-        private CepControlller _controller;
+        private CepController _controller;
 
         [Fact(DisplayName = "BadRequest Metodo Get de Cep")]
         public async Task RetornoBadRequest_MetodoGet()
@@ -49,7 +49,7 @@ namespace Api.Application.Test.Cep.QuandoRequisitadoGet
                             }
                         });
 
-            _controller = new CepControlller(_serviceMock.Object);
+            _controller = new CepController(_serviceMock.Object);
             _controller.ModelState.AddModelError("Id", "Formato Inválido");
 
             var result = await _controller.Get(Guid.NewGuid());

@@ -10,7 +10,7 @@ namespace Api.Application.Test.Cep.QuandoRequisitadoDelete
 {
     public class RetornoOk
     {
-        private CepControlller _controller;
+        private CepController _controller;
 
         [Fact(DisplayName = "Ok Metodo Delete de municipio")]
         public async Task RetornoBadRequest_Delete_Cep()
@@ -18,7 +18,7 @@ namespace Api.Application.Test.Cep.QuandoRequisitadoDelete
             var _serviceMock = new Mock<ICepService>();
             _serviceMock.Setup(m => m.Delete(It.IsAny<Guid>())).ReturnsAsync(true);
 
-            _controller = new CepControlller(_serviceMock.Object);
+            _controller = new CepController(_serviceMock.Object);
 
             var result = await _controller.Delete(Guid.NewGuid());
             Assert.True(result is OkObjectResult);

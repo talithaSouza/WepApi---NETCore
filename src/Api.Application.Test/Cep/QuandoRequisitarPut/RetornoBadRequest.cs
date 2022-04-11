@@ -10,7 +10,7 @@ namespace Api.Application.Test.Cep.QuandoRequisitarPut
 {
     public class RetornoBadRequest
     {
-        private CepControlller _controller;
+        private CepController _controller;
 
         [Fact(DisplayName = "Retorno BadRequest Upadate de Cep")]
         public async void BadRequest_Update()
@@ -35,7 +35,7 @@ namespace Api.Application.Test.Cep.QuandoRequisitarPut
                 UpdateAt = DateTime.UtcNow
             });
 
-            _controller = new CepControlller(serviceMock.Object);
+            _controller = new CepController(serviceMock.Object);
             _controller.ModelState.AddModelError("ID", "Formato Inválido");
 
 

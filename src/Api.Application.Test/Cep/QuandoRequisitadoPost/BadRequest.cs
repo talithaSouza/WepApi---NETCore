@@ -10,7 +10,7 @@ namespace Api.Application.Test.Cep.QuandoRequisitadoPost
 {
     public class BadRequest
     {
-        private CepControlller _controller;
+        private CepController _controller;
 
         [Fact(DisplayName = "Retorno BadRequest Created de Cep")]
         public async void BadRequest_Created()
@@ -35,7 +35,7 @@ namespace Api.Application.Test.Cep.QuandoRequisitadoPost
                 CreateAt = DateTime.UtcNow
             });
 
-            _controller = new CepControlller(serviceMock.Object);
+            _controller = new CepController(serviceMock.Object);
             _controller.ModelState.AddModelError("ID", "Formato Inválido");
 
             //Mocando o endereço URL da API para o retorno do guid na rota: como definido na controller

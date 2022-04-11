@@ -10,10 +10,10 @@ namespace Api.Application.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CepControlller : ControllerBase
+    public class CepController : ControllerBase
     {
         private ICepService _service;
-        public CepControlller(ICepService service)
+        public CepController(ICepService service)
         {
             _service = service;
         }

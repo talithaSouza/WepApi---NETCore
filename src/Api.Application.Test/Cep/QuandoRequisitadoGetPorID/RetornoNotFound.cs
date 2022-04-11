@@ -13,7 +13,7 @@ namespace Api.Application.Test.Cep.QuandoRequisitadoGet
 {
     public class RetornoNotFound
     {
-        private CepControlller _controller;
+        private CepController _controller;
 
         [Fact(DisplayName = "NotFound Metodo Get de Cep")]
         public async Task RetornoNotFound_MetodoGet()
@@ -29,7 +29,7 @@ namespace Api.Application.Test.Cep.QuandoRequisitadoGet
             _serviceMock.Setup(m => m.Get(It.IsAny<Guid>()))
                         .Returns(Task.FromResult((CepDto)null));
 
-            _controller = new CepControlller(_serviceMock.Object);
+            _controller = new CepController(_serviceMock.Object);
 
             var result = await _controller.Get(Guid.NewGuid());
             Assert.True(result is NotFoundResult);
