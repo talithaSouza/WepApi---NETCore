@@ -92,7 +92,7 @@ namespace application
             {
                 c.SwaggerDoc("v1", new OpenApiInfo
                 {
-                    Title = "Curso de API com aspNetCore 3.1",
+                    Title = "Curso de API com NetCore 3.1/5.0",
                     Version = "v1",
                     Description = "Arquiterura DDD",
                     TermsOfService = new Uri("http://www.mfrinfo.com.br"),
@@ -136,7 +136,7 @@ namespace application
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Curso de API com AspNetCore 3.1");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Curso de API com NetCore 3.1/NET5.0");
                 c.RoutePrefix = string.Empty;
             });
 
