@@ -37,7 +37,7 @@ namespace Api.Integration.Test.Municipio
             var jsonResult = await response.Content.ReadAsStringAsync();
             var resultValue = JsonConvert.DeserializeObject<MunicipioDtoCreateResult>(jsonResult);
 
-            Assert.Equal(response.StatusCode, HttpStatusCode.Created);
+            Assert.True(HttpStatusCode.Created == response.StatusCode);
             Assert.NotNull(resultValue);
             Assert.Equal(_nome, resultValue.Nome);
             Assert.Equal(_codIBGE, resultValue.CodIBGE);
@@ -61,7 +61,7 @@ namespace Api.Integration.Test.Municipio
             jsonResult = await response.Content.ReadAsStringAsync();
             var resultUpdate = JsonConvert.DeserializeObject<MunicipioDtoUpdateResult>(jsonResult);
 
-            Assert.Equal(response.StatusCode, HttpStatusCode.OK);
+            Assert.True(HttpStatusCode.OK == response.StatusCode);
             Assert.NotNull(resultUpdate);
             Assert.Equal(nomeAlterado, resultUpdate.Nome);
             Assert.Equal(CodIBGEAlterado, resultUpdate.CodIBGE);
@@ -73,7 +73,7 @@ namespace Api.Integration.Test.Municipio
             jsonResult = await response.Content.ReadAsStringAsync();
             var resultGet = JsonConvert.DeserializeObject<MunicipioDto>(jsonResult);
 
-            Assert.Equal(response.StatusCode, HttpStatusCode.OK);
+            Assert.True(HttpStatusCode.OK == response.StatusCode);
             Assert.NotNull(resultGet);
             Assert.Equal(resultUpdate.Nome, resultGet.Nome);
             Assert.Equal(resultUpdate.CodIBGE, resultGet.CodIBGE);
@@ -84,7 +84,7 @@ namespace Api.Integration.Test.Municipio
             jsonResult = await response.Content.ReadAsStringAsync();
             var resultGetComplete = JsonConvert.DeserializeObject<MunicipioDtoCompleto>(jsonResult);
 
-            Assert.Equal(response.StatusCode, HttpStatusCode.OK);
+            Assert.True(HttpStatusCode.OK == response.StatusCode);
             Assert.NotNull(resultGetComplete);
             Assert.Equal(resultUpdate.Nome, resultGetComplete.Nome);
             Assert.Equal(resultUpdate.CodIBGE, resultGetComplete.CodIBGE);
@@ -96,7 +96,7 @@ namespace Api.Integration.Test.Municipio
             jsonResult = await response.Content.ReadAsStringAsync();
             var resultGetCompleteIBGE = JsonConvert.DeserializeObject<MunicipioDtoCompleto>(jsonResult);
 
-            Assert.Equal(response.StatusCode, HttpStatusCode.OK);
+            Assert.True(HttpStatusCode.OK == response.StatusCode);
             Assert.NotNull(resultGetCompleteIBGE);
             Assert.Equal(resultUpdate.Nome, resultGetCompleteIBGE.Nome);
             Assert.Equal(resultUpdate.CodIBGE, resultGetCompleteIBGE.CodIBGE);
@@ -121,7 +121,7 @@ namespace Api.Integration.Test.Municipio
 
             Assert.True(resultDelete);
             response = await client.GetAsync($"{hostApi}/municipio/{resultGet.Id}");
-            Assert.Equal(response.StatusCode, HttpStatusCode.NotFound);
+            Assert.Equal(HttpStatusCode.NotFound, response.StatusCode);
             #endregion
         }
     }
