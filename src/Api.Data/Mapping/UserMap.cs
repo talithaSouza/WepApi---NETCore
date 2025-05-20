@@ -12,6 +12,10 @@ namespace Api.Data.Mapping
 
             builder.HasKey(u => u.Id);
 
+            builder.Property(u => u.Id)
+            .HasColumnType("char(36)")
+            .IsRequired();
+
             builder.HasIndex(u => u.Email)
                    .IsUnique();
 

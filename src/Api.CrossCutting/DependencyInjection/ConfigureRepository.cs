@@ -28,19 +28,12 @@ namespace Api.CrossCutting.DependencyInjection
             serviceCollection.AddScoped<ICepRepository, CepRepository>();
             #endregion
 
-            if (Environment.GetEnvironmentVariable("DATABASE").ToLower() == "SQLSERVER".ToLower())
-            {
-                serviceCollection.AddDbContext<MyContext>(
-                  options => options.UseSqlServer(Environment.GetEnvironmentVariable("DB_CONNECTION"))
-                );
-            }
-            //CASO MYSQL
-            else
-            {
-                serviceCollection.AddDbContext<MyContext>(
-                  options => options.UseSqlServer(Environment.GetEnvironmentVariable("DB_CONNECTION"))
-                );
-            }
+
+            string connectionString = "Server=localhost;Port=3303;Database=api_dotnet;User=root;Password=Abc12345!;";
+            serviceCollection.AddDbContext<MyContext>(
+              options => options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString))
+            );
+
         }
     }
 }
